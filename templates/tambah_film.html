@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Tambah Film - Entertainment Hub{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Tambah Hiburan Baru</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Judul Hiburan</label>
+            <input type="text" name="judul" required class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Deskripsi</label>
+            <textarea name="deskripsi" required class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Gambar atau Poster</label>
+            <input type="file" name="gambar" accept="image/*" required class="form-control-file">
+        </div>
+        <button type="submit" class="btn btn-primary">Tambah Hiburan</button>
+    </form>
+</div>
+{% endblock %}

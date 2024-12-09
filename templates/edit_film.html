@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Hiburan - Entertainment Hub{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Edit Hiburan</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <form method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Judul Hiburan</label>
+            <input type="text" name="judul" value="{{ film.judul }}" required class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Deskripsi</label>
+            <textarea name="deskripsi" required class="form-control">{{ film.deskripsi }}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Gambar Hiburan Saat Ini</label>
+            <img src="{{ url_for('static', filename=film.gambar) }}" alt="{{ film.judul }}" style="max-width: 200px;">
+        </div>
+        <div class="form-group">
+            <label>Ganti Gambar atau Poster (opsional)</label>
+            <input type="file" name="gambar" accept="image/*" class="form-control-file">
+        </div>
+        <button type="submit" class="btn btn-primary">Perbarui Hiburan</button>
+    </form>
+</div>
+{% endblock %}
